@@ -46,6 +46,7 @@ jobs:
           name: lan-mouse-linux-aarch64
           path: target/release/lan-mouse-aarch64
 
+
   windows-release-build:
     runs-on: windows-latest
     steps:

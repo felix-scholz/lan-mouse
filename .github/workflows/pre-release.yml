@@ -38,14 +38,13 @@ jobs:
           sudo apt-get install libadwaita-1-dev libgtk-4-dev
       - name: Release Build
         run: cargo build --release
-      - name: Strip binary
-        run: ls target/release/
+      - name: debug
+        run: ls -lA target/release/
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: lan-mouse-linux-aarch64
-          path: target/release/lan-mouse-aarch64
-
+          path: target/release/lan-mouse
 
   windows-release-build:
     runs-on: windows-latest

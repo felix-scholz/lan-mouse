@@ -27,6 +27,25 @@ jobs:
         name: lan-mouse-linux
         path: target/release/lan-mouse
 
+  linux-aarch64-release-build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - name: install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libx11-dev libxtst-dev
+          sudo apt-get install libadwaita-1-dev libgtk-4-dev
+      - name: Release Build
+        run: cargo build --release
+      - name: Strip binary
+        run: ls target/release/
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lan-mouse-linux-aarch64
+          path: target/release/lan-mouse-aarch64
+
   windows-release-build:
     runs-on: windows-latest
     steps:
@@ -151,6 +170,7 @@ jobs:
         title: "Development Build"
         files: |
           lan-mouse-linux/lan-mouse
+          lan-mouse-linux-aarch64/lan-mouse-aarch64
           lan-mouse-macos-intel/lan-mouse-macos-intel.zip
           lan-mouse-macos-aarch64/lan-mouse-macos-aarch64.zip
           lan-mouse-windows/lan-mouse-windows.zip

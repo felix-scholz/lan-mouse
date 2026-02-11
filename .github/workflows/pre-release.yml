@@ -156,7 +156,7 @@ jobs:
 
   pre-release:
     name: "Pre Release"
-    needs: [windows-release-build, linux-release-build, macos-release-build, macos-aarch64-release-build]
+    needs: [windows-release-build, linux-release-build, linux-aarch64-release-build, macos-release-build, macos-aarch64-release-build]
     runs-on: "ubuntu-latest"
     steps:
     - name: Download build artifacts
